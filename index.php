@@ -15,31 +15,29 @@ require_once __DIR__ . '/classes/AddressManager.php';
 spl_autoload_register(function($className) {
     require __DIR__ . '/classes/' . $className . '.php';
 });
-
-$productOne = new ShopProduct(
-        'OOP',
-        'Зандстра',
-        'Мэтт',
-        1700
-);
-$productTwo = new ShopProduct(
-        'JS NINJA',
-        'Резиг',
-        'Джон',
-        2400
+$productOne = new BookProduct(
+  'Javascript Ninja',
+  'John',
+  'Resing',
+  '30',
+  '400'
 );
 
-//$settings = simplexml_load_file(__DIR__ . '/resolve.xml');
-//$manager = new AddressManager();
-//$manager->outputAddresses((string)$settings);
+$productTwo = new CDProduct(
+  'Классическая музыка. Лучшее',
+  'Антонио',
+  'Вивальди',
+  '10.99',
+  '60.33');
 
-$writer = new ShopProductWriter();
-
+//$allProducts = new ShopProductWriter();
+//$allProducts->addProduct($productOne);
+//$allProducts->write();
 
 
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -49,7 +47,7 @@ $writer = new ShopProductWriter();
 </head>
 <body>
 
-<h1><?php echo $productOne->getProducer(); ?></h1>
-<p><?php echo $writer->write($productOne); ?></p>
+<h1>CD <?php echo $productTwo->getSummaryLine(); ?> цена <?php echo $productTwo->getPrice();?></h1>
+<h1>BOOK <?php echo $productOne->getSummaryLine(); ?> цена <?php echo $productOne->getPrice();?></h1>
 </body>
 </html>

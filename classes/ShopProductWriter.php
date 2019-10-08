@@ -3,11 +3,22 @@
 
 class ShopProductWriter
 {
-    public function write(ShopProduct $shopProduct)
+    public $products = [];
+
+    public function addProduct(ShopProduct $shopProduct)
     {
-        $str = $shopProduct->title . ': '
-                . $shopProduct->getProducer()
-                . '(' . $shopProduct->price . ')';
-        return $str;
+        $this->products = $shopProduct;
+    }
+
+    public function write()
+    {
+        $str = "";
+        print_r($this->products);
+
+        foreach ($this->products as $shopProduct) {
+            $str .= "{$shopProduct->title} : ";
+
+        }
+        echo $str;
     }
 }

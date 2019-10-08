@@ -4,10 +4,11 @@
 class ShopProduct
 {
     // defined properties
-    public $title;
-    public $producerMainName;
-    public $producerFirstName;
-    public $price;
+    private $title;
+    private $producerMainName;
+    private $producerFirstName;
+    protected $price;
+    private $discount = 0;
 
     // created a constructor
     public function __construct(
@@ -27,5 +28,22 @@ class ShopProduct
     {
         return $this->producerMainName . ' '
                 . $this->producerFirstName;
+    }
+
+    public function getSummaryLine()
+    {
+        $base = "{$this->title} ( {$this->producerMainName}, ";
+        $base .= "{$this->producerFirstName} )";
+        return $base;
+    }
+
+    public function setDiscount(int $num)
+    {
+        $this->discount = $num;
+    }
+
+    public function getPrice()
+    {
+        return ($this->price - $this->discount);
     }
 }
