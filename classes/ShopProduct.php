@@ -1,14 +1,16 @@
 <?php
 
 
-class ShopProduct
+class ShopProduct implements Chargeable
 {
+  use PriceUtilities;
     // defined properties
     private $title;
     private $producerMainName;
     private $producerFirstName;
     protected $price;
     private $discount = 0;
+    private $taxrate = 20;
 
     // created a constructor
     public function __construct(
@@ -42,7 +44,7 @@ class ShopProduct
         $this->discount = $num;
     }
 
-    public function getPrice()
+    public function getPrice(): float
     {
         return ($this->price - $this->discount);
     }

@@ -34,6 +34,12 @@ $productTwo = new CDProduct(
 //$allProducts->addProduct($productOne);
 //$allProducts->write();
 
+$good = new ShopProduct(
+  'Нежное мыло',
+  '',
+  'Ванная Боба',
+  '1.33');
+
 
 ?>
 <!doctype html>
@@ -49,5 +55,6 @@ $productTwo = new CDProduct(
 
 <h1>CD <?php echo $productTwo->getSummaryLine(); ?> цена <?php echo $productTwo->getPrice();?></h1>
 <h1>BOOK <?php echo $productOne->getSummaryLine(); ?> цена <?php echo $productOne->getPrice();?></h1>
+<h1>TaxRate <?php echo $good->calculateTax(100); ?></h1>
 </body>
 </html>
